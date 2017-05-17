@@ -1,0 +1,74 @@
+<ion-view view-title="Home" hide-nav-bar="true">
+	<style>
+		.img-scroll img{width: 21%;height: 60px;margin-left: 5px;border-radius: 10%;}
+		.img-scroll{padding-left: 20px;padding-right: 20px; width: 100%;height: 80px;white-space: nowrap;overflow-x: scroll;overflow-y: hidden;overflow-scrolling: touch;-webkit-overflow-scrolling: touch;}
+		h4{font-family: "仿宋";margin-left: 20px;}
+		input{font-family: "仿宋";}
+	</style>
+	<!--头部搜索框-->
+			<div class="bar bar-header bar-dark item-input-inset item-avatar">
+				<label class="item-input-wrapper">
+						<i class="icon ion-search" style="color: black;padding-left: 5em;"></i>
+						<input type="search" placeholder="搜索你感兴趣的内容" />
+				</label>
+			</div>
+  <ion-content ng-controller="slideCtrl" has-header overflow-scroll="true">
+			<!--轮播-->
+			<ion-slide-box active-slide="myActiveSlide" auto-play="true" does-continue="true" slide-interval="2000" style="height:50%;">
+				<ion-slide ng-repeat="pic in pics">
+					<img style="width: 100%;height: 100%;" src="img/{{pic.picSrc}}"/>
+				</ion-slide>
+			</ion-slide-box>
+			<!--分类查看主题站-->
+			<h5 style="font-family: "宋体";">分类查看主题站</h5>
+			<div class="img-scroll">
+				<div>
+					<img src="../img/抽象01.jpg" />
+					<img src="../img/抽象05.jpg" />
+					<img src="../img/抽象07.jpg" />
+					<img src="../img/抽象09.jpg" />
+					<img src="../img/抽象02.jpg" />
+					<img src="../img/抽象03.jpg" />
+					<img src="../img/抽象01.jpg" />
+					<img src="../img/抽象05.jpg" />
+					<img src="../img/抽象07.jpg" />
+					<img src="../img/抽象09.jpg" />
+					<img src="../img/抽象02.jpg" />
+					<img src="../img/抽象03.jpg" />
+				</div>
+			</div>
+			<!--最新课程-->
+			<div style="font-family: '仿宋';" class=" list">
+				<a class="item item-left" href="#">
+			    	最新课程
+			    <span class="item-note">
+			     	更多
+			     	<i class="icon-right ion-ios-arrow-right"></i>
+			    </span>
+			  </a>
+				<div class="row" ng-repeat="homeLists in HomeNewListRows">
+					<div class="col col-50" ng-repeat="homeList in homeLists">
+				    <img class="full-image" src="img/{{homeList.imgsrc}}" />
+				    <p>
+				      <a href="#" class="subdued">{{homeList.title}}</a>
+				      <a href="#" class="subdued">{{homeList.main}}</a>
+				    </p>
+					</div>
+			</div>
+			<!--猜你喜欢-->
+			<div class=" list">
+				<div class="item">
+					<h2 style="font-family: '仿宋';">猜你喜欢</h2>
+				</div>
+				<div class="item item-body row" ng-repeat="homeLists in HomeLikeListRows">
+					<div class="col col-50">
+				    	<img style="height: 2.5rem;" src="img/{{homeLists.imgsrc}}" />
+					</div>
+					<div class="col col-50">
+					    <a href="#" class="subdued">{{homeLists.title}}</a><br />
+					    <a href="#" class="subdued">{{homeLists.main}}</a>
+				    </div>
+				</div>	
+			</div>
+  </ion-content>
+</ion-view>
